@@ -1,0 +1,88 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+    <!-- Dynamic Title: Use the Post Title -->
+    <title>{{ post.title }} | The Incurable Optimist</title>
+
+    <!-- Meta Description: Provide a summary of the post -->
+    <meta name="description" content="{{ post.exegesis|truncatewords:25 }}">
+
+    <!-- Keywords: Optional, but could include the post's category and important terms -->
+    <meta name="keywords" content="spiritual growth, metaphysical exegesis, {{ post.category.name }}, daily scripture, {{ post.title }}">
+
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="{{ post.title }} | The Incurable Optimist">
+    <meta property="og:description" content="{{ post.exegesis|truncatewords:25 }}">
+    <meta property="og:image" content="{% if post.image %}{{ post.image.url }}{% else %}{% static 'blog/logo.png' %}{% endif %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ post.title }} | The Incurable Optimist">
+    <meta name="twitter:description" content="{{ post.exegesis|truncatewords:25 }}">
+    <meta name="twitter:image" content="{% if post.image %}{{ post.image.url }}{% else %}{% static 'blog/logo.png' %}{% endif %}">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+
+{% block title %}{{ post.title }} | The Incurable Optimist{% endblock %}
+
+{% block content %}
+    <!-- Post Content -->
+    <article class="bg-white shadow-lg rounded-lg p-8 mb-10">
+        <h1 class="text-4xl font-bold mb-4">{{ post.title }}</h1>
+        <p class="text-sm text-gray-500 mb-4">Posted on {{ post.created_at }} | Category: {{ post.category.name }}</p>
+        <!-- Post Image (Optional) -->
+        {% if post.image %}
+            <div class="my-4">
+                <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-full max-w-xl mx-auto rounded-lg shadow-md">
+            </div>
+        {% endif %}
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-2">Scripture</h2>
+            <p class="text-gray-700">{{ post.scripture }}</p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-2">Metaphysical Exegesis</h2>
+            <p class="text-gray-700">{{ post.exegesis }}</p>
+        </section>
+
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-2">Life Application</h2>
+            <p class="text-gray-700">{{ post.application }}</p>
+        </section>
+    </article>
+
+<!-- Comments Section -->
+    <section class="mb-10">
+        <h2 class="comment text-3xl font-bold mb-6">Comments</h2>
+
+        <ul class="space-y-4">
+            {% for comment in comments %}
+                <li class="bg-white shadow-lg rounded-lg p-4">
+                    <p class="text-gray-600"><strong>{{ comment.author }}</strong> said:</p>
+                    <p class="mt-2">{{ comment.body }}</p>
+                    <p class="text-sm text-gray-400 mt-2">{{ comment.created_at }}</p>
+                </li>
+            {% empty %}
+                <li>No comments yet. Be the first to comment!</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+<!-- Toggle Comment Form Visibility -->
+    <section x-data="{ showForm: false }">
+    <button @click="showForm = !showForm" class="bg-indigo-700 text-white px-6 py-3 rounded-lg font-bold">Leave a Comment</button>
+
+    <!-- Comment Form (Toggled Visibility) -->
+        <div x-show="showForm" class="mt-6">
+            <form method="POST" class="bg-white shadow-lg rounded-lg p-6">
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <button type="submit" class="bg-indigo-700 text-white px-6 py-3 rounded-lg font-bold">Submit</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

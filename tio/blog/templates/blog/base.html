@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}The Incurable Optimist | Daily Scriptures for Spiritual Growth{% endblock %}</title>
+
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'blog/custom.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Alpine.js for interactivity -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js"></script>
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- Navigation Bar -->
+<header class="bg-indigo-700 text-white">
+    <div class="container mx-auto p-6 flex flex-col md:flex-row justify-between items-center">
+        <div class="text-center md:text-left">
+            <h1 class="text-4xl font-bold">The Incurable Optimist</h1>
+            <p class="mt-2">Daily Scriptures with Metaphysical Exegesis and Life Applications</p>
+        </div>
+        <nav class="mt-4 md:mt-0">
+            <ul class="flex space-x-4">
+                <li><a href="{% url 'post_list' %}" class="hover:bg-pink-500 hover:text-white">TIO</a></li>
+                <li><a href="{% url 'about' %}" class="hover:bg-pink-500 hover:text-white">About</a></li>
+                <li><a href="{% url 'contact' %}" class="hover:bg-pink-500 hover:text-white">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+    <!-- Content -->
+    <main class="container mx-auto py-10">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-indigo-700 text-white mt-10">
+        <div class="container mx-auto p-6 flex justify-between items-center">
+            <p>&copy; 2024 The Incurable Optimist. All rights reserved.</p>
+            <div>
+                <a href="https://facebook.com" target="_blank">Facebook</a>
+                <a href="https://twitter.com" target="_blank">Twitter</a>
+                <a href="https://instagram.com" target="_blank">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>
