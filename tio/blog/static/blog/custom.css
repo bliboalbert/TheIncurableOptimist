@@ -172,3 +172,11 @@ footer i {
 footer i:hover {
     transform: scale(1.2);
 }
+
+.social-share a img {
+    transition: transform 0.2s ease-in-out;
+}
+
+.social-share a img:hover {
+    transform: scale(1.1);
+}

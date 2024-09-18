@@ -33,6 +33,11 @@
                 <li><a href="{% url 'contact' %}" class="hover:bg-pink-500 hover:text-white">Contact</a></li>
             </ul>
         </nav>
+
+        <form action="{% url 'post_search' %}" method="GET">
+            <input type="text" name="q" placeholder="Search posts...">
+            <button type="submit">Search</button>
+        </form>
     </div>
 </header>
 

@@ -1,17 +1,13 @@
 # blog/views.py
 
-from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, FormView, TemplateView
-from django.shortcuts import get_object_or_404, redirect
-from django.views.generic.detail import SingleObjectMixin
-from django.utils.decorators import method_decorator
-from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404, redirect, render
+from django.db.models import Q
 
 from .models import Post, Category, Comment
 from .forms import CommentForm
 
 
-# 1. ListView for the Homepage: List all blog posts
 class PostListView(ListView):
     model = Post
     template_name = 'blog/post_list.html'
@@ -37,7 +33,14 @@ class PostDetailView(DetailView, FormView):
         context = super().get_context_data(**kwargs)
         context['comments'] = self.get_object().comments.all()
         context['comment_form'] = self.get_form()
+        context['related_posts'] = Post.objects.filter(category=self.object.category).exclude(id=self.object.id)[:3]
         return context
+
+    def get_object(self):
+        post = super().get_object()
+        post.views += 1
+        post.save()
+        return post
 
     def post(self, request, *args, **kwargs):
         # Handle comment form submission
@@ -72,6 +75,15 @@ class CategoryPostListView(ListView):
         return context
 
 
+class TaggedPostListView(ListView):
+    model = Post
+    template_name = 'blog/post_detail.html'
+    context_object_name = 'posts'
+
+    def get_queryset(self):
+        return Post.objects.filter(tags__slug=self.kwargs.get('slug'))
+
+
 # 4. TemplateView for the About page
 class AboutView(TemplateView):
     template_name = 'blog/about.html'
@@ -80,3 +92,15 @@ class AboutView(TemplateView):
 # 5. TemplateView for the Contact page
 class ContactView(TemplateView):
     template_name = 'blog/contact.html'
+
+
+class PostSearchView(ListView):
+    model = Post
+    template_name = 'blog/post_search.html'
+    context_object_name = 'posts'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            return Post.objects.filter(Q(title__icontains=query) | Q(exegesis__icontains=query))
+        return Post.objects.none()

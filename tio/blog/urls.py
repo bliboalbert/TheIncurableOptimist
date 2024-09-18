@@ -1,7 +1,12 @@
 # blog/urls.py
 
 from django.urls import path
-from .views import PostListView, PostDetailView, CategoryPostListView, AboutView, ContactView
+from .views import PostListView, PostDetailView, CategoryPostListView, AboutView, ContactView, PostSearchView
+from django.contrib.sitemaps.views import sitemap
+from .sitemap import PostSitemap
+
+sitemaps = {'posts': PostSitemap}
+
 
 urlpatterns = [
     path('', PostListView.as_view(), name='post_list'),
@@ -9,4 +14,6 @@ urlpatterns = [
     path('category/<int:category_id>/', CategoryPostListView.as_view(), name='category_posts'),
     path('about/', AboutView.as_view(), name='about'),
     path('contact/', ContactView.as_view(), name='contact'),
+    path('search/', PostSearchView.as_view(), name='post_search'),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]

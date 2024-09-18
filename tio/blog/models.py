@@ -1,9 +1,10 @@
 # blog/models.py
 
+from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
-from django.contrib.auth.models import User
+from taggit.managers import TaggableManager
 
 
 class Category(models.Model):
@@ -22,6 +23,9 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, related_name='posts', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='post_images/', blank=True, null=True)
+    tags = TaggableManager()
+    is_featured = models.BooleanField(default=False)
+    views = models.IntegerField(default=0)
 
     def get_absolute_url(self):
         return reverse('post_detail', kwargs={'pk': self.pk})
