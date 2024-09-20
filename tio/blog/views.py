@@ -36,11 +36,12 @@ class PostDetailView(DetailView, FormView):
         context['related_posts'] = Post.objects.filter(category=self.object.category).exclude(id=self.object.id)[:3]
         return context
 
-    def get_object(self):
-        post = super().get_object()
+    def get(self, request, *args, **kwargs):
+
+        post = self.get_object()
         post.views += 1
-        post.save()
-        return post
+        post.save(update_fields=['views'])
+        return super().get(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
         # Handle comment form submission
@@ -77,11 +78,16 @@ class CategoryPostListView(ListView):
 
 class TaggedPostListView(ListView):
     model = Post
-    template_name = 'blog/post_detail.html'
+    template_name = 'blog/tagged_post.html'
     context_object_name = 'posts'
 
     def get_queryset(self):
         return Post.objects.filter(tags__slug=self.kwargs.get('slug'))
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tag'] = self.kwargs.get('slug')
+        return context
 
 
 # 4. TemplateView for the About page

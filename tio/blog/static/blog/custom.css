@@ -23,27 +23,15 @@ p {
     line-height: 1.6;
 }
 
+nav, .search {
+    padding-bottom: 35px;
+}
+
 
 
 /* Change the color palette */
 .bg-indigo {
     background-color: #4B0082 !important;
-}
-
-.bg-forest-green {
-    background-color: #228B22 !important;
-}
-
-.bg-goldenrod {
-    background-color: #DAA520 !important;
-}
-
-.bg-slategray {
-    background-color: #708090 !important;
-}
-
-.bg-rosegold {
-    background-color: #B76E79 !important;
 }
 
 .text-white {
@@ -54,12 +42,13 @@ p {
 /* Increase spacing around content */
 
 .grid {
-    padding: 10px 30px;
+    padding: 10px 10px;
 }
 
-.recent, .comment {
+.recent, .comment, .related, .tags, .featured {
     padding: 30px;
 }
+
 .container {
     margin-top: 30px;
     margin-bottom: 30px;
@@ -137,6 +126,7 @@ h1, h2 {
     letter-spacing: 1px;
 }
 
+}
 /* Add subtle shadow to headers */
 h1, h2 {
     text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
@@ -179,4 +169,102 @@ footer i:hover {
 
 .social-share a img:hover {
     transform: scale(1.1);
+}
+
+
+/* Container for share buttons */
+.social-sharing {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+/* Style for individual share buttons */
+.social-sharing a {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 14px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: white;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+/* Facebook button */
+.social-sharing a.btn-facebook {
+    background-color: #3b5998;
+}
+
+.social-sharing a.btn-facebook:hover {
+    background-color: #2d4373;
+    transform: scale(1.1);
+}
+
+/* Twitter button */
+.social-sharing a.btn-twitter {
+    background-color: #55acee;
+}
+
+.social-sharing a.btn-twitter:hover {
+    background-color: #2795e9;
+    transform: scale(1.1);
+}
+
+/* LinkedIn button */
+.social-sharing a.btn-linkedin {
+    background-color: #0077b5;
+}
+
+.social-sharing a.btn-linkedin:hover {
+    background-color: #005582;
+    transform: scale(1.1);
+}
+
+/* Common hover effects */
+.social-sharing a:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Post views display */
+.post-views {
+    font-size: 14px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+/* Eye icon before the view count */
+.post-views i {
+    margin-right: 5px;
+    color: #0077b5;
+}
+
+/* Optional hover effect */
+.post-views:hover {
+    color: #555;
+}
+
+
+/* Progress bar container */
+.progress-container {
+    width: 100%;
+    height: 5px;
+    background: #f3f3f3;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;  /* Ensure the bar stays on top of the content */
+}
+
+/* The progress bar itself */
+.progress-bar {
+    height: 5px;
+    width: 0%;
+    background-color: #4caf50;  /* Green color for the progress bar */
+    transition: width 0.1s;  /* Smooth transition */
 }
