@@ -101,6 +101,7 @@ header a {
     transition: color 0.3s;
 }
 
+
 /* Additional Styling for Links in the Footer */
 footer a {
     color: white; /* Keep links white */
@@ -268,3 +269,4 @@ footer i:hover {
     background-color: #4caf50;  /* Green color for the progress bar */
     transition: width 0.1s;  /* Smooth transition */
 }
+

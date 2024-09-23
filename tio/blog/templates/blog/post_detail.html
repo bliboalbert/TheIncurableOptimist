@@ -56,7 +56,7 @@
 
         <section class="mb-8">
             <h2 class="text-2xl font-bold mb-2">Life Application</h2>
-            <p class="text-gray-700">{{ post.application }}</p>
+            <p class="text-gray-700">{{ post.application}}</p>
         </section>
 
         <p class="post-views">
@@ -73,20 +73,8 @@
             <p> ← Share </p>
         </div>
 
-
-
-    </article>
-
-        <h3 class="related">Related Posts</h3>
-        <ul class="related">
-            {% for related_post in related_posts %}
-                <li><a href="{% url 'post_detail' related_post.pk %}">{{ related_post.title }}</a></li>
-            {% endfor %}
-        </ul>
-
-
         <div class="tags mt-4">
-            <h3 class="text-xl font-bold">Tags:</h3>
+            <h6 class="text-xl font-bold">Tags:</h6>
             <ul class="flex space-x-2">
                 {% for tag in post.tags.all %}
                     <li><a href="{% url 'tagged_posts' tag.slug %}" class="bg-gray-200 text-gray-700 px-2 py-1 rounded-lg">{{ tag.name }}</a></li>
@@ -95,14 +83,13 @@
             </ul>
         </div>
 
-
-
+    </article>
 
 <!-- Comments Section -->
     <section class="mb-10">
         <h2 class="comment text-3xl font-bold mb-6">Comments</h2>
 
-        <ul class="space-y-4">
+        <ul class="space-y-4 comment">
             {% for comment in comments %}
                 <li class="bg-white shadow-lg rounded-lg p-4">
                     <p class="text-gray-600"><strong>{{ comment.author }}</strong> said:</p>
@@ -123,11 +110,27 @@
         <div x-show="showForm" class="mt-6">
             <form method="POST" class="bg-white shadow-lg rounded-lg p-6">
                 {% csrf_token %}
-                {{ comment_form.as_p }}
+                <div class="mb-4">
+                    <label for="id_author" class="block text-gray-700 font-bold mb-2">Name:</label>
+                    <input type="text" name="author" id="id_author" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Your name">
+                </div>
+
+                <div class="mb-4">
+                    <label for="id_body" class="block text-gray-700 font-bold mb-2">Comment:</label>
+                    <textarea name="body" id="id_body" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="Your comment"></textarea>
+                </div>
                 <button type="submit" class="bg-indigo-700 text-white px-6 py-3 rounded-lg font-bold">Submit</button>
             </form>
         </div>
     </section>
+
+
+    <h3 class="related">Related Posts</h3>
+    <ul class="related">
+        {% for related_post in related_posts %}
+            <li><a href="{% url 'post_detail' related_post.pk %}">{{ related_post.title }}</a></li>
+        {% endfor %}
+    </ul>
 
     <!-- Link to the JavaScript file -->
     <script src="{% static 'blog/progress.js' %}"></script>

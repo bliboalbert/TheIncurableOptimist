@@ -4,6 +4,7 @@ from django.urls import path
 from .views import (PostListView, PostDetailView, CategoryPostListView, AboutView, ContactView, PostSearchView, TaggedPostListView)
 from django.contrib.sitemaps.views import sitemap
 from .sitemap import PostSitemap
+from .views import NewsletterSubscribeView
 
 sitemaps = {'posts': PostSitemap}
 
@@ -16,5 +17,6 @@ urlpatterns = [
     path('contact/', ContactView.as_view(), name='contact'),
     path('search/', PostSearchView.as_view(), name='post_search'),
     path('tag/<slug:slug>', TaggedPostListView.as_view(), name='tagged_posts'),
+    path('subscribe/', NewsletterSubscribeView.as_view(), name='newsletter_subscribe'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]

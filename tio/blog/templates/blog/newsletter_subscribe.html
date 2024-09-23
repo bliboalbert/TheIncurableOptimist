@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+  <h2>Subscribe to Our Newsletter</h2>
+  
+  <form method="post" novalidate>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Subscribe</button>
+  </form>
+
+  {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+              <li> {% if message.tags %} class="{{ message.tags }}"{% endif %}{{ message }}</li>
+          {% endfor %}
+      </ul>
+  {% endif %}
+{% endblock %}
