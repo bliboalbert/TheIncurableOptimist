@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
     const loadMoreButton = document.getElementById("load-more");
+    const loadLessButton = document.getElementById("load-less");
+    const postList = document.getElementById("post-list");
+
+    loadLessButton.style.display = "none";
 
     loadMoreButton.addEventListener("click", function () {
         const page = this.getAttribute("data-page");
@@ -18,13 +22,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Update the page number for the next request
                 loadMoreButton.setAttribute("data-page", parseInt(page) + 1);
-            } else {
-                // Hide the button if there are no more posts
-                loadMoreButton.style.display = "none";
+
+                // Check if we have loaded the last page
+                if (!data.has_next) {
+                    loadMoreButton.style.display = "none";
+                    loadLessButton.style.display = "block";
+                }
             }
         })
         .catch(error => {
             console.error("Error fetching more posts:", error);
         });
     });
+
+        // Load Less Functionality
+        loadLessButton.addEventListener("click", function () {
+            postList.innerHTML = ""; // Clear all loaded posts
+
+            // Reload the first page of posts
+            fetch(`?page=1`, {
+                headers: {
+                    "X-Requested-With": "XMLHttpRequest"
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                postList.insertAdjacentHTML("beforeend", data.posts_html);
+                loadLessButton.style.display = "none";
+                loadMoreButton.style.display = "block";
+                loadMoreButton.setAttribute("data-page", 2);
+            })
+            .catch(error => {
+                console.error("Error loading less posts:", error);
+            });
+        });
 });

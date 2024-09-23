@@ -1,6 +1,6 @@
 # blog/models.py
 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
@@ -13,6 +13,10 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+
+# class CustomUser(AbstractUser):
+#     pass
 
 
 class Post(models.Model):

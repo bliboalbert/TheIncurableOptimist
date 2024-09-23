@@ -2,6 +2,10 @@
 
 body {
     font-family: 'Open Sans', sans-serif; /* Body text font */
+    padding-top: 200px;
+    font-size: 18px;
+    line-height: 1.75;
+    letter-spacing: 0.5px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -21,6 +25,8 @@ h2 {
 p {
     font-size: 1.1rem;
     line-height: 1.6;
+    margin-bottom: 20px;
+    align: left;
 }
 
 nav, .search {
@@ -49,21 +55,12 @@ nav, .search {
     padding: 30px;
 }
 
-.container {
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
 h1, h2 {
     margin-top: 20px;
     margin-bottom: 15px;
+    letter-spacing: 1px;
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
-
-p {
-    margin-bottom: 20px;
-    align: left;
-}
-
 /* Style buttons */
 .btn {
     border-radius: 30px;
@@ -78,13 +75,26 @@ p {
     background-color: #3B006E; /* Darken on hover */
 }
 
+.load {
+    margin-left: 15px;
+}
 /* Gradient header */
 /* Header and Footer Styling */
-header, footer {
+
+header {
+    background: linear-gradient(135deg, #4B0082, #3B006E);
+    color: white;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure the header stays on top*/
+    border-bottom: 1px solid #add;
+}
+
+footer {
     background: linear-gradient(135deg, #4B0082, #3B006E); /* Indigo gradient */
-    color: white; /* Ensure text color contrasts with the dark background */
     padding: 40px 0; /* Add space to make the text more readable */
-    text-align: center; /* Center the text */
     position: relative; /* Ensure the text stays above the background */
     z-index: 1;
 }
@@ -112,25 +122,6 @@ footer a {
 
 footer a:hover {
     color: #EB3678; /* Slightly change color on hover for emphasis */
-}
-
-
-/* Adjust font size and spacing */
-body {
-    font-size: 18px;
-    line-height: 1.75;
-    letter-spacing: 0.5px;
-}
-
-/* Headings */
-h1, h2 {
-    letter-spacing: 1px;
-}
-
-}
-/* Add subtle shadow to headers */
-h1, h2 {
-    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Box shadow for post cards */
@@ -270,3 +261,10 @@ footer i:hover {
     transition: width 0.1s;  /* Smooth transition */
 }
 
+button.news {
+    height: 28px;
+}
+
+.newsletter {
+    padding-top: 150px;
+}

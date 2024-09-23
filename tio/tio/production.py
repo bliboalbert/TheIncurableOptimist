@@ -2,6 +2,12 @@ from .settings import *
 import os
 import environ
 
+
+# Initialize environment variables
+env = environ.Env()
+environ.Env.read_env()
+
+
 DEBUG = False
 ALLOWED_HOSTS = ['your-domain.com', 'www.your-domain.com']
 
@@ -55,11 +61,6 @@ DATABASES = {
     }
 }
 
-
-# Initialize environment variables
-env = environ.Env()
-environ.Env.read_env()
-
 # Mailchimp Configuration
 MAILCHIMP_API_KEY = env('MAILCHIMP_API_KEY')
 MAILCHIMP_DATA_CENTER = env('MAILCHIMP_DATA_CENTER')  # The data center is part of your API key (e.g., 'usX')
@@ -83,4 +84,6 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+AUTH_USER_MODEL = "blog.CustomUser"
 

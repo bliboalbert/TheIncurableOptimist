@@ -173,7 +173,7 @@ class PostSearchView(ListView):
 
 
 class NewsletterSubscribeView(FormView):
-    template_name = 'newsletter_subscribe.html'
+    template_name = 'blog/newsletter_subscribe.html'
     form_class = NewsletterForm
     success_url = reverse_lazy('newsletter_subscribe')
 

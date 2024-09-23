@@ -31,14 +31,14 @@
                 <li><a href="{% url 'post_list' %}" class="hover:text-white">TIO</a></li>
                 <li><a href="{% url 'about' %}" class="hover:text-white">About</a></li>
                 <li><a href="{% url 'contact' %}" class="hover:text-white">Contact</a></li>
+                <li><a href="{% url 'newsletter_subscribe' %}" class="hover:text-white" target="_self">Newsletter</a></li>
             </ul>
         </nav>
-
-        <form class="search" action="{% url 'post_search' %}" method="GET">
-            <input type="text" name="q" placeholder="Search posts...">
-            <button type="submit">Search</button>
-        </form>
     </div>
+    <form class="search" action="{% url 'post_search' %}" method="GET">
+        <input type="text" name="q" placeholder="Search posts...">
+        <button type="submit">Search</button>
+    </form>
 </header>
 
 
@@ -51,6 +51,7 @@
     <footer class="bg-indigo-700 text-white mt-10">
         <div class="container mx-auto p-6 flex justify-between items-center">
             <p>&copy; 2024 The Incurable Optimist. All rights reserved.</p>
+            <a href="{% url 'newsletter_subscribe' %}" target="_self"><b>Subscribe to Newsletter</b></a>
             <div>
                 <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
