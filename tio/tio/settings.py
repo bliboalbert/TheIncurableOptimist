@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'tailwind',
     'taggit',
     # 'corsheaders',
-    # 'ckeditor',
+    'ckeditor',
 ]
 
 # Optionally add CKEditor settings

@@ -40,7 +40,7 @@
                 {% if post.is_featured %}
                     <div class="post-item">
                         <h3><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h3>
-                        <p>{{ post.exegesis|truncatewords:20}}</p>
+                        <p>{{ post.exegesis|striptags|truncatewords:20|safe}}</p>
                     </div>
                 {% endif %}
             {% endfor %}

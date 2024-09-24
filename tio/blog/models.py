@@ -5,7 +5,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 from taggit.managers import TaggableManager
-# from ckeditor.fields import RichTextField
+from ckeditor.fields import RichTextField
 
 
 class Category(models.Model):
@@ -21,9 +21,9 @@ class Category(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
-    scripture = models.TextField()  # Daily scripture
-    exegesis = models.TextField() # Metaphysical exegesis
-    application = models.TextField()  # Daily application of the scripture
+    scripture = RichTextField()  # Daily scripture
+    exegesis = RichTextField() # Metaphysical exegesis
+    application = RichTextField()  # Daily application of the scripture
     created_at = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, related_name='posts', on_delete=models.CASCADE)
