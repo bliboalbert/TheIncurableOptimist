@@ -1,0 +1,434 @@
+/* Static blog/custom.css */
+
+body {
+    font-family: 'Open Sans', 'Lato', 'Source Sans Pro', 'Roboto', sans-serif;
+    padding-top: 300px;
+    font-weight: 300px;
+    color: #333;
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+}
+
+/* Primary font for headings: Lora, with fallbacks */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lora', 'Playfair Display', 'Merriweather', 'Cormorant Garamond', serif;
+    font-weight: 500; /* Bold for headings */
+}
+
+/* Customize heading sizes */
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.75em;
+}
+
+h4 {
+    font-size: 1.5em;
+}
+
+h5 {
+    font-size: 1.25em;
+}
+
+h6 {
+    font-size: 1em;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    align: left;
+}
+
+nav .search {
+    padding-bottom: 35px;
+}
+.search {
+    margin-left: 700px;
+    margin-bottom: 35px;
+}
+
+
+
+
+/* Change the color palette */
+.bg-indigo {
+    background-color: #4B0082 !important;
+}
+
+.text-white {
+    color: white !important;
+}
+
+
+/* Increase spacing around content */
+
+.grid {
+    padding: 5px 5px;
+}
+
+.recent, .comment, .related, .tags, .featured {
+    padding: 25px;
+}
+
+h1, h2 {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+/* Style buttons */
+.btn {
+    border-radius: 30px;
+    padding: 10px 20px;
+    background-color: #4B0082; /* Indigo background */
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #3B006E; /* Darken on hover */
+}
+
+.load {
+    margin-left: 15px;
+}
+/* Gradient header */
+/* Header and Footer Styling */
+
+header {
+    background: linear-gradient(135deg, #4B0082, #3B006E);
+    color: white;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure the header stays on top*/
+    border-bottom: 1px solid #add;
+}
+
+footer {
+    background: linear-gradient(135deg, #4B0082, #3B006E); /* Indigo gradient */
+    padding: 40px 0; /* Add space to make the text more readable */
+    position: relative; /* Ensure the text stays above the background */
+    z-index: 1;
+}
+
+header h1, footer p {
+    font-size: 1rem; /* Adjust font size for better visibility */
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); /* Add text shadow for better readability */
+}
+
+header a {
+    color: white; /* Keep links white */
+    margin: 0 15px; /* Add space between links */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+
+/* Additional Styling for Links in the Footer */
+footer a {
+    color: white; /* Keep links white */
+    margin: 0 15px; /* Add space between links */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #EB3678; /* Slightly change color on hover for emphasis */
+}
+
+/* Basic card styles */
+.post-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+
+.post-card:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile-first: full width */
+.post-card h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.post-card p {
+    font-size: 16px;
+}
+
+/* For larger screens */
+@media (min-width: 768px) {
+    .post-card {
+        display: block;
+        justify-content: space-between;
+        padding: 20px;
+    }
+
+    .post-card h2 {
+        font-size: 24px;
+    }
+
+    .post-card p {
+        font-size: 18px;
+    }
+}
+
+
+/* Links */
+a {
+    color: #4B0082;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #3B006E;
+    text-decoration: none;
+}
+
+/* Social media icons in footer */
+footer i {
+    transition: transform 0.3s ease;
+}
+
+footer i:hover {
+    transform: scale(1.2);
+}
+
+.social-share a img {
+    transition: transform 0.2s ease-in-out;
+}
+
+.social-share a img:hover {
+    transform: scale(1.1);
+}
+
+
+/* Container for share buttons */
+.social-sharing {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+/* Style for individual share buttons */
+.social-sharing a {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 14px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: white;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+/* Facebook button */
+.social-sharing a.btn-facebook {
+    background-color: #3b5998;
+}
+
+.social-sharing a.btn-facebook:hover {
+    background-color: #2d4373;
+    transform: scale(1.1);
+}
+
+/* Twitter button */
+.social-sharing a.btn-twitter {
+    background-color: #55acee;
+}
+
+.social-sharing a.btn-twitter:hover {
+    background-color: #2795e9;
+    transform: scale(1.1);
+}
+
+/* LinkedIn button */
+.social-sharing a.btn-linkedin {
+    background-color: #0077b5;
+}
+
+.social-sharing a.btn-linkedin:hover {
+    background-color: #005582;
+    transform: scale(1.1);
+}
+
+/* Common hover effects */
+.social-sharing a:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Post views display */
+.post-views {
+    font-size: 14px;
+    color: #888;
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+/* Eye icon before the view count */
+.post-views i {
+    margin-right: 5px;
+    color: #0077b5;
+}
+
+/* Optional hover effect */
+.post-views:hover {
+    color: #555;
+}
+
+
+/* Progress bar container */
+.progress-container {
+    width: 100%;
+    height: 5px;
+    background: #f3f3f3;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;  /* Ensure the bar stays on top of the content */
+}
+
+/* The progress bar itself */
+.progress-bar {
+    height: 5px;
+    width: 0%;
+    background-color: #4caf50;  /* Green color for the progress bar */
+    transition: width 0.1s;  /* Smooth transition */
+}
+
+button.news {
+    height: 28px;
+}
+
+.newsletter {
+    padding-top: 150px;
+}
+
+
+/* Search form styles (Mobile-First) */
+.search-form {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-button {
+    padding: 10px;
+    background-color: white;
+    color: #4B0082;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+/* For larger screens */
+@media (min-width: 768px) {
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    body {
+        padding-top: 200px;
+    }
+
+    .search-form {
+        max-width: 300px;
+    }
+
+    .search-input {
+        width: calc(100% - 100px);
+    }
+
+    .search-button {
+        width: auto;
+    }
+}
+
+/* Basic styles for navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 6px 10px;
+}
+
+.nav-links {
+    display: none; /* Hidden on mobile */
+    list-style: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 10px 0;
+}
+
+/* Hamburger toggle */
+.navbar-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Show menu on mobile when toggle is active */
+.show {
+    display: flex;
+    flex-direction: row;
+}
+
+/* For larger screens */
+@media (min-width: 768px) {
+    .nav-links {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .navbar-toggle {
+        display: none; /* Hide hamburger on larger screens */
+    }
+}
