@@ -13,6 +13,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
 
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'image/favicon_io/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'image/favicon_io/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'image/favicon_io/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'image/favicon_io/site.webmanifest' %}">
+
     <!-- Alpine.js for interactivity -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js"></script>
     {% block extra_head %}{% endblock %}
@@ -26,18 +32,26 @@
             <h1 class="text-4xl font-bold">The Incurable Optimist</h1>
             <p class="mt-2">Daily Scriptures with Metaphysical Exegesis and Life Applications</p>
         </div>
-        <nav class="mt-4 md:mt-0">
-            <ul class="flex space-x-4">
+<!--        <nav class="mt-4 md:mt-0">-->
+        <nav class="flex items-center justify-between p-4 text-white">
+
+            <!-- Hamburger icon for mobile -->
+            <button class="navbar-toggle block lg:hidden text-3xl focus:outline-none" id="navbar-toggle">
+                &#9776; <!-- Hamburger icon -->
+            </button>
+
+            <ul class="nav-links hidden lg:flex space-x-4" id="nav-link">
                 <li><a href="{% url 'post_list' %}" class="hover:text-white">TIO</a></li>
                 <li><a href="{% url 'about' %}" class="hover:text-white">About</a></li>
                 <li><a href="{% url 'contact' %}" class="hover:text-white">Contact</a></li>
-                <li><a href="{% url 'newsletter_subscribe' %}" class="hover:text-white" target="_self">Newsletter</a></li>
+                <li><a href="{% url 'newsletter_subscribe' %}" class="hover:text-white" target="_self" id="newsletter-link">Newsletter</a></li>
             </ul>
         </nav>
     </div>
-    <form class="search" action="{% url 'post_search' %}" method="GET">
-        <input type="text" name="q" placeholder="Search posts...">
-        <button type="submit">Search</button>
+
+    <form class="search-form" action="{% url 'post_search' %}" method="GET">
+        <input class="search-input" type="text" name="q" placeholder="Search posts..." required>
+        <button class="search-button" type="submit">Search</button>
     </form>
 </header>
 
@@ -60,6 +74,6 @@
         </div>
     </footer>
 
-    {% block extra_scripts %}{% endblock %}
+    <script src="{% static 'blog/navbar.js' %}">{% block extra_scripts %}{% endblock %}</script>
 </body>
 </html>

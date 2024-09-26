@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Open Sans', sans-serif; /* Body text font */
-    padding-top: 200px;
+    padding-top: 300px;
     font-size: 18px;
     line-height: 1.75;
     letter-spacing: 0.5px;
@@ -29,9 +29,14 @@ p {
     align: left;
 }
 
-nav, .search {
+nav .search {
     padding-bottom: 35px;
 }
+.search {
+    margin-left: 700px;
+    margin-bottom: 35px;
+}
+
 
 
 
@@ -48,11 +53,11 @@ nav, .search {
 /* Increase spacing around content */
 
 .grid {
-    padding: 10px 10px;
+    padding: 5px 5px;
 }
 
 .recent, .comment, .related, .tags, .featured {
-    padding: 30px;
+    padding: 25px;
 }
 
 h1, h2 {
@@ -124,15 +129,47 @@ footer a:hover {
     color: #EB3678; /* Slightly change color on hover for emphasis */
 }
 
-/* Box shadow for post cards */
-.card {
+/* Basic card styles */
+.post-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     transition: box-shadow 0.3s ease;
 }
 
-.card:hover {
+.post-card:hover {
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
 }
+
+/* Mobile-first: full width */
+.post-card h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.post-card p {
+    font-size: 16px;
+}
+
+/* For larger screens */
+@media (min-width: 768px) {
+    .post-card {
+        display: block;
+        justify-content: space-between;
+        padding: 20px;
+    }
+
+    .post-card h2 {
+        font-size: 24px;
+    }
+
+    .post-card p {
+        font-size: 18px;
+    }
+}
+
 
 /* Links */
 a {
@@ -267,4 +304,112 @@ button.news {
 
 .newsletter {
     padding-top: 150px;
+}
+
+
+/* Search form styles (Mobile-First) */
+.search-form {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-button {
+    padding: 10px;
+    background-color: white;
+    color: #4B0082;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+/* For larger screens */
+@media (min-width: 768px) {
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    body {
+        padding-top: 200px;
+    }
+
+    .search-form {
+        max-width: 300px;
+    }
+
+    .search-input {
+        width: calc(100% - 100px);
+    }
+
+    .search-button {
+        width: auto;
+    }
+}
+
+/* Basic styles for navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 6px 10px;
+}
+
+.nav-links {
+    display: none; /* Hidden on mobile */
+    list-style: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 10px 0;
+}
+
+/* Hamburger toggle */
+.navbar-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Show menu on mobile when toggle is active */
+.show {
+    display: flex;
+    flex-direction: row;
+}
+
+/* For larger screens */
+@media (min-width: 768px) {
+    .nav-links {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .navbar-toggle {
+        display: none; /* Hide hamburger on larger screens */
+    }
 }

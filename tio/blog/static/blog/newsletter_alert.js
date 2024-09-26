@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const newsletterForm = document.getElementById("newsletter-form");
+    const newsletterLink = document.getElementById("newsletter-link");
 
     if (newsletterForm) {
         newsletterForm.addEventListener("submit", function (event) {
