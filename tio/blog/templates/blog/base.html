@@ -11,7 +11,11 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'blog/custom.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Lato:wght@400;700&family=Lora:wght@400;700&family=Merriweather:wght@400;700&family=Open+Sans:wght@400;700&family=Playfair+Display:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'image/favicon_io/apple-touch-icon.png' %}">
@@ -44,7 +48,8 @@
                 <li><a href="{% url 'post_list' %}" class="hover:text-white">TIO</a></li>
                 <li><a href="{% url 'about' %}" class="hover:text-white">About</a></li>
                 <li><a href="{% url 'contact' %}" class="hover:text-white">Contact</a></li>
-                <li><a href="{% url 'newsletter_subscribe' %}" class="hover:text-white" target="_self" id="newsletter-link">Newsletter</a></li>
+                <li><a href="#" id="newsletter-link" class="cursor-not-allowed hover:text-white">Newsletter</a></li>
+<!--                <li><a href="{% url 'newsletter_subscribe' %}" class="hover:text-white" target="_self" id="newsletter-link">Newsletter</a></li>-->
             </ul>
         </nav>
     </div>
@@ -65,7 +70,8 @@
     <footer class="bg-indigo-700 text-white mt-10">
         <div class="container mx-auto p-6 flex justify-between items-center">
             <p>&copy; 2024 The Incurable Optimist. All rights reserved.</p>
-            <a href="{% url 'newsletter_subscribe' %}" target="_self"><b>Subscribe to Newsletter</b></a>
+            <a href="#" id="newsletter-link" class="cursor-not-allowed hover:text-white">Newsletter</a>
+<!--            <a href="{% url 'newsletter_subscribe' %}" target="_self"><b>Subscribe to Newsletter</b></a>-->
             <div>
                 <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>

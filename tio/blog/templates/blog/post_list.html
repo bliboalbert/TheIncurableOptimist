@@ -39,7 +39,7 @@
             {% for post in posts %}
                 {% if post.is_featured %}
                     <div class="post-item">
-                        <h3><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h3>
+                        <h5><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h5>
                         <p>{{ post.exegesis|striptags|truncatewords:20|safe}}</p>
                     </div>
                 {% endif %}
@@ -62,5 +62,5 @@
 {% endif %}
     <!-- Link to the JS file -->
     <script src="{% static 'blog/load_more.js' %}"></script>
-<!--    <script src="{% static 'blog/navbar.js' %}"></script>-->
+    <script src="{% static 'blog/newsletter_alert.js' %}"></script>
 {% endblock %}

@@ -127,11 +127,11 @@
 
 
     <h3 class="related">Related Posts</h3>
-    <ul class="related">
+    <ol class="related" type="1">
         {% for related_post in related_posts %}
             <li><a href="{% url 'post_detail' related_post.pk %}">{{ related_post.title }}</a></li>
         {% endfor %}
-    </ul>
+    </ol>
 
     <!-- Link to the JavaScript file -->
     <script src="{% static 'blog/load_more.js' %}"></script>

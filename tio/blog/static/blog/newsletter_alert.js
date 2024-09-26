@@ -1,11 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const newsletterForm = document.getElementById("newsletter-form");
-    const newsletterLink = document.getElementById("newsletter-link");
+    const newsletterLink = document.getElementById('newsletter-link');
 
-    if (newsletterForm) {
-        newsletterForm.addEventListener("submit", function (event) {
-            event.preventDefault();  // Prevent form submission for now
-            alert("The newsletter feature is not available yet. Please check back soon!");
-        });
-    }
+    // Disable the default click event
+    newsletterLink.addEventListener('click', function (event) {
+        event.preventDefault();  // Prevent any click action
+    });
+
+    // Add a hover event to show an alert
+    newsletterLink.addEventListener('mouseover', function () {
+        alert("The newsletter feature is not available yet. Please check back soon!");
+    });
 });
+

@@ -1,25 +1,44 @@
 /* Static blog/custom.css */
 
 body {
-    font-family: 'Open Sans', sans-serif; /* Body text font */
+    font-family: 'Open Sans', 'Lato', 'Source Sans Pro', 'Roboto', sans-serif;
     padding-top: 300px;
+    font-weight: 300px;
+    color: #333;
     font-size: 18px;
-    line-height: 1.75;
+    line-height: 1.6;
     letter-spacing: 0.5px;
 }
 
+/* Primary font for headings: Lora, with fallbacks */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Lora', serif; /* Headers font */
-    font-weight: 500;
+    font-family: 'Lora', 'Playfair Display', 'Merriweather', 'Cormorant Garamond', serif;
+    font-weight: 500; /* Bold for headings */
 }
 
-/* Adjust font sizes */
+/* Customize heading sizes */
 h1 {
-    font-size: 2.5rem;
+    font-size: 2.5em;
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1.75em;
+}
+
+h4 {
+    font-size: 1.5em;
+}
+
+h5 {
+    font-size: 1.25em;
+}
+
+h6 {
+    font-size: 1em;
 }
 
 p {
