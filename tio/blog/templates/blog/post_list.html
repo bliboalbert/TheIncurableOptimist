@@ -28,10 +28,12 @@
         </div>
     </section>
 
+{% if post_numbs.post_numbs > 1 %}
     <div id="load-more-container">
         <button class="load bg-white text-indigo-700 px-6 py-3 rounded-r-lg font-bold" aria-label="Load more" id="load-more" data-page="2">Load More...</button>
         <button class="load bg-white text-indigo-700 px-6 py-3 rounded-r-lg font-bold" aria-label="Load less" id="load-less">...Load Less</button>
     </div>
+{% endif %}
 
     <section class="featured featured-posts">
         <h2 class="text-3xl font-bold mb-4">Featured Posts</h2>
@@ -63,4 +65,5 @@
     <!-- Link to the JS file -->
     <script src="{% static 'blog/load_more.js' %}"></script>
     <script src="{% static 'blog/newsletter_alert.js' %}"></script>
+    <script src="{% static 'blog/navbar.js' %}"></script>
 {% endblock %}

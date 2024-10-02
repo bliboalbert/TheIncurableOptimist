@@ -1,9 +1,10 @@
 # blog/models.py
-
+import uuid
 from django.contrib.auth.models import User, AbstractUser
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
+from django.utils.text import slugify
 from taggit.managers import TaggableManager
 from ckeditor.fields import RichTextField
 
@@ -20,6 +21,8 @@ class Category(models.Model):
 
 
 class Post(models.Model):
+    # uuid = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
+    # slug = models.SlugField(max_length=200, unique=True, editable=False)
     title = models.CharField(max_length=200)
     scripture = RichTextField()  # Daily scripture
     exegesis = RichTextField() # Metaphysical exegesis
@@ -33,7 +36,15 @@ class Post(models.Model):
     views = models.IntegerField(default=0)
 
     def get_absolute_url(self):
-        return reverse('post_detail', kwargs={'pk': self.pk})
+        return reverse('post_detail', kwargs={'pk': self.uuid})
+
+    # def save(self, *args, **kwargs):
+    #     if not self.slug:
+    #         if self.title:
+    #             self.slug = slugify(self.title)
+    #         else:
+    #             self.slug = slugify(str(self.uuid))
+    #     super(Post, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title

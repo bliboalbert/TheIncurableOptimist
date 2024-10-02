@@ -10,6 +10,7 @@ from django.http import JsonResponse
 from django.core.mail import send_mail
 from django.contrib import messages
 from django.urls import reverse_lazy
+from django.db.models import Count
 from .forms import NewsletterForm
 from .newsletter_util import subscribe_email_to_mailchimp
 
@@ -24,10 +25,13 @@ class PostListView(ListView):
     ordering = ['-created_at']
     paginate_by = 3
 
+    # post_numbs = Post.objects.all().aggregate(post_numbs=Count('id'))
+
     def get_context_data(self, **kwargs):
         # Add categories to the context for filtering
         context = super().get_context_data(**kwargs)
         context['categories'] = Category.objects.all()
+        context['post_numbs'] = Post.objects.all().aggregate(post_numbs=Count('id'))
         return context
 
     def get_queryset(self):
@@ -72,6 +76,9 @@ class PostDetailView(DetailView, FormView):
         context['related_posts'] = Post.objects.filter(category=self.object.category).exclude(id=self.object.id)[:3]
         return context
 
+    # def get_object(self, queryset=None):
+    #     return get_object_or_404(Post, slug=self.kwargs['slug'])
+
     def get_client_ip(self, request):
         # Helper method to get the client's IP address
         x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -110,6 +117,62 @@ class PostDetailView(DetailView, FormView):
         else:
             return self.form_invalid(form)
 
+
+# class PostDetailByUUIDView(DetailView, FormView):
+#     model = Post
+#     template_name = 'blog/post_detail.html'
+#     context_object_name = 'post'
+#     form_class = CommentForm
+#
+#     def get_context_data(self, **kwargs):
+#         # Add comments and form to the context
+#         context = super().get_context_data(**kwargs)
+#         context['comments'] = self.get_object().comments.all()
+#         context['comment_form'] = self.get_form()
+#         context['related_posts'] = Post.objects.filter(category=self.object.category).exclude(id=self.object.id)[:3]
+#         return context
+#
+#     def get_object(self, queryset=None):
+#         return get_object_or_404(Post, uuid=self.kwargs['uuid'])
+#
+#     def get_client_ip(self, request):
+#         # Helper method to get the client's IP address
+#         x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+#         if x_forwarded_for:
+#             ip = x_forwarded_for.split(',')[0]
+#         else:
+#             ip = request.META.get('REMOTE_ADDR')
+#         return ip
+#
+#     def get(self, request, *args, **kwargs):
+#         post = self.get_object()
+#
+#         # Get the user's IP address
+#         ip_address = self.get_client_ip(request)
+#
+#         # Check if this IP has viewed the post before
+#         if not PostView.objects.filter(post=post, ip_address=ip_address).exists():
+#             # If not, increment the view count and log the IP
+#             post.views += 1
+#             post.save(update_fields=['views'])
+#             # Save the view record
+#             PostView.objects.create(post=post, ip_address=ip_address)
+#
+#         # Proceed with the usual `get` behavior
+#         return super().get(request, *args, **kwargs)
+#
+#     def post(self, request, *args, **kwargs):
+#         # Handle comment form submission
+#         self.object = self.get_object()
+#         form = self.get_form()
+#         if form.is_valid():
+#             comment = form.save(commit=False)
+#             comment.post = self.object
+#             comment.save()
+#             return redirect(self.object.get_absolute_url())
+#         else:
+#             return self.form_invalid(form)
+#
 
 # 3. ListView for listing posts filtered by category
 class CategoryPostListView(ListView):
